@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
 
 @RestController
 @RequestMapping("pizza/delivery_driver")
@@ -31,8 +32,8 @@ public class DeliveryDriverController {
 		return deliveryDriverService.getAllDrivers();
 	}
 	
-	@GetMapping("{id}")
-	public ResponseEntity<DeliveryDriver> getDriverById(@PathVariable("id") int driverId){
+	@GetMapping("{driver_id}")
+	public ResponseEntity<DeliveryDriver> getDriverById(@PathVariable("driver_id") int driverId){
 		return new ResponseEntity<DeliveryDriver>(deliveryDriverService.getDriverByID(driverId), HttpStatus.OK);
 	}
 	
@@ -41,13 +42,13 @@ public class DeliveryDriverController {
 		return new ResponseEntity<DeliveryDriver>(deliveryDriverService.saveDriver(deliveryDriver), HttpStatus.CREATED);
 	}
 	
-	@PutMapping("{id}")
-	public ResponseEntity<DeliveryDriver> updateDriver(@PathVariable("id") int driverId, @RequestBody DeliveryDriver deliveryDriver){
+	@PutMapping("{driver_id}")
+	public ResponseEntity<DeliveryDriver> updateDriver(@PathVariable("driver_id") int driverId, @RequestBody DeliveryDriver deliveryDriver){
 		return new ResponseEntity<DeliveryDriver>(deliveryDriverService.updateDriver(deliveryDriver, driverId), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("{driver_id}")
-	public ResponseEntity<String> deleteDriver(@PathVariable("id") int driverId){
+	public ResponseEntity<String> deleteDriver(@PathVariable("driver_id") int driverId){
 		deliveryDriverService.deleteDriver(driverId);
 		return new ResponseEntity<String>("Delivery Driver Deleted", HttpStatus.OK);
 	}

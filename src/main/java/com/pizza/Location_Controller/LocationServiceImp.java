@@ -35,7 +35,6 @@ public class LocationServiceImp implements LocationService {
 	public Location updateLocation(Location location, int Id) {
 		Location existingLocation = locationRepository.findById(Id).orElseThrow(() -> new ResourceNotFoundException("Location", "id", Id));
 
-		existingLocation.setCustomer_id(location.getCustomer_id());
 		existingLocation.setAddress(location.getAddress());
 		return existingLocation;
 	}

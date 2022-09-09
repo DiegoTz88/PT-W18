@@ -42,7 +42,6 @@ public class CustomerServiceImp implements CustomerService{
 		
 		existingCustomer.setFirst_name(customer.getFirst_name());
 		existingCustomer.setLast_name(customer.getLast_name());
-		existingCustomer.setLocation(customer.getLocation());
 		existingCustomer.setPhone_number(customer.getPhone_number());
 		
 		return existingCustomer;

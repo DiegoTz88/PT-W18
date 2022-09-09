@@ -36,8 +36,8 @@ public class DeliveryDriverServiceImp implements DeliveryDriverService{
 	public DeliveryDriver updateDriver(DeliveryDriver driver, int Id) {
 		DeliveryDriver existingDriver = deliveryDriverRepository.findById(Id).orElseThrow(() -> new ResourceNotFoundException("Driver", "id", Id));
 
-		existingDriver.setName(driver.getName());;
-		existingDriver.setOrder_id(driver.getOrder_id());
+		existingDriver.setFull_name(driver.getFull_name());
+
 		
 		return existingDriver;
 	}

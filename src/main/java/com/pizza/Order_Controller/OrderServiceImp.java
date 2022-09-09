@@ -36,11 +36,9 @@ public class OrderServiceImp implements OrderService {
 	public Order updateOrder(Order order, int Id) {
 		Order existingOrder = orderRepository.findById(Id).orElseThrow(() -> new ResourceNotFoundException("Order", "id", Id));
 		
-		existingOrder.setCustomer_id(order.getCustomer_id());
 		existingOrder.setPizza_name(order.getPizza_name());
 		existingOrder.setSize(order.getSize());
 		existingOrder.setPrice(order.getPrice());
-		existingOrder.setDelivery_driver(order.getDelivery_driver());
 		
 		return existingOrder;
 	}

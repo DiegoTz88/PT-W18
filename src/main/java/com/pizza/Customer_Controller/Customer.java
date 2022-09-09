@@ -4,9 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.relational.core.mapping.Column;
+
+import com.pizza.Location_Controller.Location;
 
 import lombok.Data;
 
@@ -25,8 +29,10 @@ public class Customer {
 	private String last_name;
 	@Column(value="phone_number")
 	private String phone_number;
-	@Column(value="location")
-	private String location;
+	
+	@ManyToOne
+	@JoinColumn(name="location_id")
+	private Location location;
 	
 	//default constructor
 	public Customer() {
@@ -38,7 +44,6 @@ public class Customer {
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.phone_number = phone_number;
-		this.location = location;
 	}
 
 	//constructor that accepts everything
@@ -48,7 +53,6 @@ public class Customer {
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.phone_number = phone_number;
-		this.location = location;
 	}
 	
 	
